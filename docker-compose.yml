@@ -1,0 +1,13 @@
+version: '3'
+services:
+  notebook:
+    container_name: notebook_DeepLearning
+    labels:
+      description: Python using Jupyter Notebooks
+      name: Jupyter Notebook
+    ports:
+      - 8888:8888
+    build: .
+    volumes:
+      - .:/app
+    command: jupyter notebook --no-browser --port=8888 --ip=0.0.0.0 --allow-root --NotebookApp.token='' --NotebookApp.password=''
