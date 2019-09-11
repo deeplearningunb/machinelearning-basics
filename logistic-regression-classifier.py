@@ -3,7 +3,8 @@
 # Importing the libraries
 from matplotlib.colors import ListedColormap
 from sklearn.metrics import confusion_matrix
-from sklearn.linear_model import LogisticRegression, Perceptron
+from sklearn.linear_model import LogisticRegression, Perceptron, SGDClassifier
+from sklearn.linear_model import PassiveAggressiveClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import numpy as np
@@ -26,7 +27,7 @@ x_train = sc.fit_transform(x_train)
 x_test = sc.transform(x_test)
 
 # Fitting classifier to the Training set
-classifier = Perceptron(random_state=0)
+classifier = PassiveAggressiveClassifier(random_state=0, loss="hinge")
 classifier.fit(x_train, y_train)
 # Predicting the Test set results
 y_pred = classifier.predict(x_test)
@@ -60,7 +61,7 @@ for i, j in enumerate(np.unique(y_set)):
         label=j,
     )
 
-plt.title("Classifier (Training set) [Perceptron]")
+plt.title("Classifier (Training set) [PassiveAggressiveClassifier]")
 plt.xlabel("Age")
 plt.ylabel("Estimated Salary")
 plt.legend()
@@ -92,7 +93,7 @@ for i, j in enumerate(np.unique(y_set)):
         label=j,
     )
 
-plt.title("Classifier (Test set) [Perceptron]")
+plt.title("Classifier (Test set) [PassiveAggressiveClassifier]")
 plt.xlabel("Age")
 plt.ylabel("Estimated Salary")
 plt.legend()
