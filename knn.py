@@ -19,13 +19,13 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 # Fitting classifier to the Training set
-#from sklearn.linear_model import LogisticRegression
-from sklearn.neighbors import KNeighborsClassifier
+#from sklearn.linear_model import LogisticRegression importação do classificador original
+from sklearn.neighbors import KNeighborsClassifier # Importando Classificador KNN
 
-#classifier = LogisticRegression(random_state = 0)
+#classifier = LogisticRegression(random_state = 0) classificador original
 
 classifier = KNeighborsClassifier(n_neighbors=3) # definindo o número de vizinhos que serão utilizados na análise
-
+# mudando o classificador o codigo continua seguindo a mesma ideia entretando muda o algoritmo sendo aplicado, neste caso é uma aprendizado supervisionado
 classifier.fit(X_train,y_train)
 
 # Predicting the Test set results
