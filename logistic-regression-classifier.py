@@ -4,6 +4,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.linear_model import LogisticRegression, SGDClassifier
+from sklearn.linear_model import PassiveAggressiveClassifier
 
 # Importing the dataset
 dataset = pd.read_csv('Social_Network_Ads.csv')
@@ -22,7 +24,7 @@ X_test = sc.transform(X_test)
 
 # Fitting classifier to the Training set
 from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(random_state = 0)
+classifier = PassiveAggressiveClassifier(random_state = 0, loss="hinge")
 classifier.fit(X_train,y_train)
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
@@ -43,7 +45,7 @@ plt.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('Classifier (Training set)')
+plt.title("Classifier (Training set) [PassiveAggressiveClassifier]")
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
@@ -61,7 +63,7 @@ plt.ylim(X2.min(), X2.max())
 for i, j in enumerate(np.unique(y_set)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c = ListedColormap(('red', 'green'))(i), label = j)
-plt.title('Classifier (Test set)')
+plt.title("Classifier (Test set) [PassiveAggressiveClassifier]")
 plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
