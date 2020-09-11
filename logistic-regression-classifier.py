@@ -33,6 +33,9 @@ y_pred = classifier.predict(X_test)
 # o LogisticRegression, a acurácia aumento de 0.84 para 0.89.
 print(np.mean(y_pred == y_test))
 
+from sklearn.metrics import classification_report
+print(classification_report(y_test, y_pred))
+
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
