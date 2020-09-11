@@ -21,11 +21,17 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 # Fitting classifier to the Training set
-from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(random_state = 0)
+from sklearn.ensemble import GradientBoostingClassifier
+classifier = GradientBoostingClassifier(random_state = 0)
 classifier.fit(X_train,y_train)
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
+
+# Precisão
+
+#Com troca do classificador PassiveAggressiveClassifier para
+# o LogisticRegression, a acurácia aumento de 0.84 para 0.89.
+print(np.mean(y_pred == y_test))
 
 # Making the Confusion Matrix
 from sklearn.metrics import confusion_matrix
