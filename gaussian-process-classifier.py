@@ -21,8 +21,9 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 # Fitting classifier to the Training set
-from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(random_state = 0)
+from sklearn.gaussian_process import GaussianProcessClassifier
+from sklearn.gaussian_process.kernels import RBF
+classifier = GaussianProcessClassifier(1.0 * RBF(1.0))
 classifier.fit(X_train,y_train)
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
